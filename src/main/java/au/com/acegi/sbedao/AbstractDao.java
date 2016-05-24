@@ -11,10 +11,10 @@ import org.agrona.Verify;
 import org.agrona.concurrent.UnsafeBuffer;
 import org.agrona.sbe.CompositeDecoderFlyweight;
 import org.agrona.sbe.CompositeEncoderFlyweight;
-import org.agrona.sbe.CompositeType;
 import org.agrona.sbe.MessageDecoderFlyweight;
 import org.agrona.sbe.MessageEncoderFlyweight;
-import org.agrona.sbe.MessageType;
+import org.agrona.sbe.CompositeStructure;
+import org.agrona.sbe.MessageStructure;
 
 /**
  * Abstract implementation.
@@ -24,7 +24,7 @@ import org.agrona.sbe.MessageType;
  * implementations you'd need thread local storage or specify an explicit thread
  * contracts, re-point DirectBuffers at memory-mapped locations and so on....
  */
-public abstract class AbstractDao<K extends CompositeType, KE extends CompositeEncoderFlyweight<K>, KD extends CompositeDecoderFlyweight<K>, V extends MessageType, VE extends MessageEncoderFlyweight<V>, VD extends MessageDecoderFlyweight<V>>
+public abstract class AbstractDao<K extends CompositeStructure, KE extends CompositeEncoderFlyweight<K>, KD extends CompositeDecoderFlyweight<K>, V extends MessageStructure, VE extends MessageEncoderFlyweight<V>, VD extends MessageDecoderFlyweight<V>>
     implements Dao<K, KE, KD, V, VE, VD> {
 
   private Map<String, String> map = new HashMap<>();

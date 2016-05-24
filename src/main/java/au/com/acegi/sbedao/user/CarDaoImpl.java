@@ -3,15 +3,15 @@ package au.com.acegi.sbedao.user;
 import au.com.acegi.sbedao.AbstractDao;
 import baseline.CarDecoder;
 import baseline.CarEncoder;
-import baseline.CarType;
+import baseline.CarStructure;
 import baseline.EngineDecoder;
 import baseline.EngineEncoder;
-import baseline.EngineType;
+import baseline.EngineStructure;
 
 /**
  * Example of what we could generate at runtime to implement the DAO.
  */
-public class CarDaoImpl extends AbstractDao<EngineType, EngineEncoder, EngineDecoder, CarType, CarEncoder, CarDecoder>
+public class CarDaoImpl extends AbstractDao<EngineStructure, EngineEncoder, EngineDecoder, CarStructure, CarEncoder, CarDecoder>
     implements CarDao {
 
   public CarDaoImpl() {

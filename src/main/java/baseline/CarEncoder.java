@@ -7,7 +7,7 @@ import org.agrona.sbe.MessageEncoderFlyweight;
 
 @javax.annotation.Generated(value = {"baseline.CarEncoder"})
 @SuppressWarnings("all")
-public class CarEncoder implements MessageEncoderFlyweight<CarType>
+public class CarEncoder implements MessageEncoderFlyweight<CarStructure>
 {
     public static final int BLOCK_LENGTH = 47;
     public static final int TEMPLATE_ID = 1;

@@ -2,10 +2,10 @@ package au.com.acegi.sbedao;
 
 import org.agrona.sbe.CompositeDecoderFlyweight;
 import org.agrona.sbe.CompositeEncoderFlyweight;
-import org.agrona.sbe.CompositeType;
 import org.agrona.sbe.MessageDecoderFlyweight;
 import org.agrona.sbe.MessageEncoderFlyweight;
-import org.agrona.sbe.MessageType;
+import org.agrona.sbe.CompositeStructure;
+import org.agrona.sbe.MessageStructure;
 
 /**
  * PoC for a simple SBE-aware DAO.
@@ -21,7 +21,7 @@ import org.agrona.sbe.MessageType;
  * 4. Message header handling is hidden from client
  * 5. Feasible for runtime code generation
  */
-public interface Dao<K extends CompositeType, KE extends CompositeEncoderFlyweight<K>, KD extends CompositeDecoderFlyweight<K>, V extends MessageType, VE extends MessageEncoderFlyweight<V>, VD extends MessageDecoderFlyweight<V>> {
+public interface Dao<K extends CompositeStructure, KE extends CompositeEncoderFlyweight<K>, KD extends CompositeDecoderFlyweight<K>, V extends MessageStructure, VE extends MessageEncoderFlyweight<V>, VD extends MessageDecoderFlyweight<V>> {
 
   // Methods to fetch flyweights the caller must use with get/put calls
   KE getKeyFlyweight();

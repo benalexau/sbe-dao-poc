@@ -6,7 +6,7 @@ import org.agrona.sbe.CompositeDecoderFlyweight;
 
 @javax.annotation.Generated(value = {"baseline.OptionalExtrasDecoder"})
 @SuppressWarnings("all")
-public class OptionalExtrasDecoder implements CompositeDecoderFlyweight<OptionalExtrasType>
+public class OptionalExtrasDecoder implements CompositeDecoderFlyweight<OptionalExtrasStructure>
 {
     public static final int ENCODED_LENGTH = 1;
     private DirectBuffer buffer;

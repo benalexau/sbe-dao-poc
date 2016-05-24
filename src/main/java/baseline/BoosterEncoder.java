@@ -6,7 +6,7 @@ import org.agrona.sbe.CompositeEncoderFlyweight;
 
 @javax.annotation.Generated(value = {"baseline.BoosterEncoder"})
 @SuppressWarnings("all")
-public class BoosterEncoder implements CompositeEncoderFlyweight<BoosterType>
+public class BoosterEncoder implements CompositeEncoderFlyweight<BoosterStructure>
 {
     public static final int ENCODED_LENGTH = 2;
     private MutableDirectBuffer buffer;

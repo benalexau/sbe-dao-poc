@@ -6,7 +6,7 @@ import org.agrona.sbe.CompositeEncoderFlyweight;
 
 @javax.annotation.Generated(value = {"baseline.EngineEncoder"})
 @SuppressWarnings("all")
-public class EngineEncoder implements CompositeEncoderFlyweight<EngineType>
+public class EngineEncoder implements CompositeEncoderFlyweight<EngineStructure>
 {
     public static final int ENCODED_LENGTH = 8;
     private MutableDirectBuffer buffer;

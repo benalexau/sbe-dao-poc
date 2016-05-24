@@ -3,5 +3,6 @@ package org.agrona.sbe;
 /**
  * An SBE schema defined type.
  */
-public interface Type {
+public interface Type
+{
 }

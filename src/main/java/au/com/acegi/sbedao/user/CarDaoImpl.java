@@ -9,7 +9,7 @@ import baseline.EngineEncoder;
 import baseline.EngineStructure;
 
 /**
- * Example of what we could generate at runtime to implement the DAO.
+ * Example of a manually-written DAO (unnecessary given the DAO Factory).
  */
 public class CarDaoImpl extends AbstractDao<EngineStructure, EngineEncoder, EngineDecoder, CarStructure, CarEncoder, CarDecoder>
     implements CarDao {

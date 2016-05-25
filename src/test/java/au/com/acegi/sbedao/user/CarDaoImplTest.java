@@ -1,5 +1,6 @@
 package au.com.acegi.sbedao.user;
 
+import au.com.acegi.sbedao.DaoFactory;
 import baseline.BooleanType;
 import baseline.BoostType;
 import baseline.CarDecoder;
@@ -45,45 +46,56 @@ public class CarDaoImplTest {
       throw new RuntimeException(ex);
     }
   }
-  
+
   @Test
-  public void helloWorld() {
+  public void staticDao() {
     CarDao dao = new CarDaoImpl();
+    testWithDao(dao);
+  }
+
+  @Test
+  public void generatedDao() {
+    DaoFactory factory = new DaoFactory();
+    CarDao dao = factory.newInstance(CarDao.class);
+    testWithDao(dao);
+  }
+
+  public void testWithDao(CarDao dao) {
     EngineEncoder key = dao.getKeyFlyweight();
     CarEncoder val = dao.getValFlyweight();
 
     // get when map empty
     assertThat(dao.someKey(), is(nullValue()));
-    
+
     int engineCapacity = 12345;
     encodeEngine(key, engineCapacity, 0);
     encodeCar(val, engineCapacity);
     dao.put(key, val);
     CarDecoder readVal = dao.get(key);
     decodeCar(readVal, engineCapacity);
-    
+
     // random key
     EngineDecoder keyDecoder = dao.someKey();
     assertThat(keyDecoder.capacity(), is(engineCapacity));
-   
+
     // not found use case
     engineCapacity = 99999;
     encodeEngine(key, engineCapacity, 0);
     readVal = dao.get(key);
     assertThat(readVal, is(nullValue()));
-    
+
     engineCapacity = 54321;
     encodeEngine(key, engineCapacity, 0);
     encodeCar(val, engineCapacity);
     dao.put(key, val);
     readVal = dao.get(key);
     decodeCar(readVal, engineCapacity);
-    
+
     engineCapacity = 12345;
     encodeEngine(key, engineCapacity, 0);
     readVal = dao.get(key);
     decodeCar(readVal, engineCapacity);
-    
+
     engineCapacity = 54321;
     encodeEngine(key, engineCapacity, 0);
     readVal = dao.get(key);
@@ -96,7 +108,7 @@ public class CarDaoImplTest {
         .putManufacturerCode(MANUFACTURER_CODE, srcOffset)
         .booster().boostType(BoostType.NITROUS).horsePower((short) 200);
   }
-  
+
   private void encodeCar(CarEncoder car, int engineCap) {
     final int srcOffset = 0;
     car.serialNumber(SN)
@@ -165,13 +177,13 @@ public class CarDaoImplTest {
       assertThat(fuelFigures.count(), is(3));
       fuelFigures.usageDescription();
     }
-    
+
     for (final PerformanceFiguresDecoder perfFigures : car.performanceFigures()) {
       perfFigures.octaneRating();
       for (AccelerationDecoder acceleration : perfFigures.acceleration()) {
         acceleration.mph();
       }
-    assertThat(perfFigures.count(), is(2));
+      assertThat(perfFigures.count(), is(2));
     }
 
     assertThat(car.make(), is(new String(MAKE, StandardCharsets.UTF_8)));
